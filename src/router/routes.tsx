@@ -6,6 +6,7 @@ import {
   NotFoundPage,
   QuestionPage,
 } from "../pages/index.ts";
+import { ProtectedRoute } from "../components/index.ts";
 
 export default createBrowserRouter([
   {
@@ -14,7 +15,11 @@ export default createBrowserRouter([
   },
   {
     path: "/app",
-    element: <LoggedLayout />,
+    element: (
+      <ProtectedRoute>
+        <LoggedLayout />
+      </ProtectedRoute>
+    ),
     children: [
       {
         index: true,
