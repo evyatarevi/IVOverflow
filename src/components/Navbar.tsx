@@ -7,9 +7,15 @@ import {
   NavLink,
   NavbarContainer,
 } from "./styledComponents/Navbar.style";
+import Button from "./styledComponents/Button.style.ts";
+import { useState } from "react";
+import { QuestionForm } from "./index.ts";
 
 const Navbar: React.FC = () => {
   const navigate = useNavigate();
+
+  const [displayQuestionForm, setDisplayQuestionForm] =
+    useState<boolean>(false);
 
   const handleLogout = async () => {
     try {
@@ -21,12 +27,22 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <NavbarContainer>
-      <NavItems>
-        <NavLink href="/app">Home</NavLink>
-      </NavItems>
-      <LogoutButton onClick={handleLogout}>Logout</LogoutButton>
-    </NavbarContainer>
+    <>
+      <NavbarContainer>
+        <NavItems>
+          <NavLink href="/app">Home</NavLink>
+        </NavItems>
+        <div>
+          <Button onClick={() => setDisplayQuestionForm(true)}>
+            Add Question
+          </Button>
+          <LogoutButton onClick={handleLogout}>Logout</LogoutButton>
+        </div>
+      </NavbarContainer>
+      {displayQuestionForm && (
+        <QuestionForm setDisplayQuestionForm={setDisplayQuestionForm} />
+      )}
+    </>
   );
 };
 

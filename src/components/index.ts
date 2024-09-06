@@ -8,6 +8,7 @@ import AnswersContainer from "./AnswerContainer.tsx";
 import AnswerCard from "./AnswerCard.tsx";
 import Error from "./Error.tsx";
 import ProtectedRoute from "./ProtectedRoute.tsx";
+import QuestionForm from "./QuestionForm.tsx";
 
 export {
   LoginForm,
@@ -20,4 +21,5 @@ export {
   AnswerCard,
   Error,
   ProtectedRoute,
+  QuestionForm,
 };
