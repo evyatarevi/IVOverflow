@@ -1,4 +1,8 @@
 import { useState } from "react";
+import { signInWithEmailAndPassword, AuthError } from "firebase/auth";
+import { auth } from "../config/firebaseConfig";
+import { useNavigate } from "react-router-dom";
+import { Error } from "./index";
 import {
   Button,
   FormGroup,
@@ -8,11 +12,26 @@ import {
 } from "./styledComponents/LoginForm.styles";
 
 const LoginForm = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-  const handleForm = () => {
-    // check if email and password valid
+  const [email, setEmail] = useState<string>("evi@evi.com");
+  const [password, setPassword] = useState<string>("123456");
+  const [error, setError] = useState<string | null>(null);
+
+  const handleForm = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setError(null);
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      console.log("Logged in:", userCredential.user);
+      navigate("/app");
+    } catch (err: any) {
+      setError(err.message);
+    }
   };
 
   return (
@@ -36,6 +55,7 @@ const LoginForm = () => {
         />
       </FormGroup>
       <Button>Login</Button>
+      {error && <Error message={error} />}
     </StyledForm>
   );
 };
