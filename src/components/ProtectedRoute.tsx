@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../config/firebaseConfig";
+import { Loading } from "./index";
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
@@ -23,7 +24,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
     return () => unsubscribe();
   }, []);
 
-  return user ? children : "Loading...";
+  return user ? children : <Loading />;
 };
 
 export default ProtectedRoute;

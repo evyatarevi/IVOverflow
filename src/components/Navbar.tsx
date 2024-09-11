@@ -30,7 +30,7 @@ const Navbar: React.FC = () => {
     <>
       <NavbarContainer>
         <NavItems>
-          <NavLink href="/app">Home</NavLink>
+          <NavLink onClick={() => navigate("/app")}>Home</NavLink>
         </NavItems>
         <div>
           <Button onClick={() => setDisplayQuestionForm(true)}>

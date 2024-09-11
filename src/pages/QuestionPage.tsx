@@ -5,7 +5,6 @@ import _ from "lodash";
 import {
   Title,
   AuthorContainer,
-  // QuestionHeader,
   TagContainer,
 } from "../components/styledComponents/QuestionCard.styles";
 import { Tag } from "../components/styledComponents/Tag.styles";
@@ -26,14 +25,13 @@ const QuestionPage = () => {
   const questions = useSelector(
     (state: RootState) => state.questions.questions
   );
-  if (questions.length === 0) {
-    return <div>Loading...</div>;
+  if (!questions.length) {
+    return;
   }
 
   const questionIndex = questions.findIndex((question) => question.id === id);
-  const question = questions[questionIndex];
-  // if (!question) return <NotFoundPage />;
   if (!id || questionIndex === -1) return <NotFoundPage />;
+  const question = questions[questionIndex];
 
   const handleAddAnswer = async (answerContent: string) => {
     const newAnswer = {

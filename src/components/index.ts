@@ -9,6 +9,7 @@ import AnswerCard from "./AnswerCard.tsx";
 import Error from "./Error.tsx";
 import ProtectedRoute from "./ProtectedRoute.tsx";
 import QuestionForm from "./QuestionForm.tsx";
+import Loading from "./Loading.tsx";
 
 export {
   LoginForm,
@@ -22,4 +23,5 @@ export {
   Error,
   ProtectedRoute,
   QuestionForm,
+  Loading,
 };

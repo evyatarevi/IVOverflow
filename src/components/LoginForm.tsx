@@ -14,8 +14,8 @@ import {
 const LoginForm = () => {
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState<string>("evi@evi.com");
-  const [password, setPassword] = useState<string>("123456");
+  const [email, setEmail] = useState<string>("iv@iv.com");
+  const [password, setPassword] = useState<string>("uv149evyatar");
   const [error, setError] = useState<string | null>(null);
 
   const handleForm = async (e: React.FormEvent<HTMLFormElement>) => {

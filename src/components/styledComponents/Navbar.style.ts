@@ -15,10 +15,11 @@ export const NavItems = styled.div`
 `;
 
 export const NavLink = styled.a`
+  cursor: pointer;
   color: white;
   text-decoration: none;
   &:hover {
-    text-decoration: underline;
+    color: #007bff;
   }
 `;
 
